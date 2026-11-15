@@ -1,0 +1,10 @@
+{
+  "name": "restcozy",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test packages/shared/*.test.mjs",
+    "check": "npm test"
+  },
+  "engines": { "node": ">=20" }
+}
