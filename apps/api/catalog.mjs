@@ -3,7 +3,7 @@
  * A trusted server auth adapter MUST verify identity before passing principal.
  * No public admin routes should be mounted without a real session verifier.
  */
-import { assertPaise } from '../shared/pricing.mjs';
+import { assertPaise } from '../../packages/shared/pricing.mjs';
 
 const ROLES = new Set(['owner','admin','catalog_editor']);
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
