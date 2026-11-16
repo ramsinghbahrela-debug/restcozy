@@ -3,8 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node --test packages/shared/*.test.mjs",
+    "test": "node --test packages/shared/*.test.mjs apps/api/*.test.mjs",
     "check": "npm test"
   },
-  "engines": { "node": ">=20" }
+  "engines": {
+    "node": ">=20"
+  }
 }
