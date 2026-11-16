@@ -7,7 +7,7 @@ import { assertPaise } from '../../packages/shared/pricing.mjs';
 
 const ROLES = new Set(['owner','admin','catalog_editor']);
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
-const KEY = /^[a-zA-Z0-9][a-zA-Z0-9/_-]{0,255}$/;
+const KEY = /^[a-zA-Z0-9][a-zA-Z0-9/_.-]{0,255}$/;
 const TYPES = new Set(['image/jpeg','image/png','image/webp','image/avif']);
 const MAX_BYTES = 8 * 1024 * 1024;
 const textField = (v, max=200) => typeof v === 'string' && v.trim().length > 0 && v.trim().length <= max;
@@ -41,7 +41,7 @@ function validateDiscount(data) {
   return {percentBps:data.percentBps,enabled:data.enabled,startsAt:starts?.toISOString() ?? null,endsAt:ends?.toISOString() ?? null};
 }
 function validateImage(data, productId) {
-  if (!data || !textField(productId,100) || !KEY.test(data.objectKey ?? '') ||
+  if (!data || !textField(productId,100) || !KEY.test(data.objectKey ?? '') || /(^|\\/)\\.\\.?($|\\/)/.test(data.objectKey ?? '') ||
       !data.objectKey.startsWith('products/' + productId + '/') ||
       !TYPES.has(data.contentType) || !Number.isSafeInteger(data.sizeBytes) ||
       data.sizeBytes < 1 || data.sizeBytes > MAX_BYTES ||
