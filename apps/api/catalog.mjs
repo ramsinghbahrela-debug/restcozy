@@ -41,7 +41,7 @@ function validateDiscount(data) {
   return {percentBps:data.percentBps,enabled:data.enabled,startsAt:starts?.toISOString() ?? null,endsAt:ends?.toISOString() ?? null};
 }
 function validateImage(data, productId) {
-  if (!data || !textField(productId,100) || !KEY.test(data.objectKey ?? '') || /(^|\\/)\\.\\.?($|\\/)/.test(data.objectKey ?? '') ||
+  if (!data || !textField(productId,100) || !KEY.test(data.objectKey ?? '') || (data.objectKey ?? '').split('/').some(segment => segment === '.' || segment === '..') ||
       !data.objectKey.startsWith('products/' + productId + '/') ||
       !TYPES.has(data.contentType) || !Number.isSafeInteger(data.sizeBytes) ||
       data.sizeBytes < 1 || data.sizeBytes > MAX_BYTES ||
