@@ -28,3 +28,10 @@ Store image object keys, not hardcoded vendor URLs; develop object-storage adapt
 
 ## Imagery progress
 2026-11-17: Rollout specification created; no new supplier-accurate product photos have been uploaded or connected yet. Image generation and upload still to be completed.
+
+## 2026-11-17 evening milestone
+- Warm Ivory & Sage storefront styling implemented in index.html; product visuals still placeholders.
+- All 21 concept models now expose Single, Double, Queen, King illustrative size-dependent prices and a variant-aware preview bag. Price multipliers are not manufacturer quotations or live offers.
+- Storefront regression tests added. Production checkout remains disabled.
+- New photorealistic mattress assets uploaded this session: **0/21**. Do not mark an image complete until a generated file is stored and linked to its specific product.
+- Next: add a labelled AI concept photo, then continue image-by-image; connect real category/product/variant admin API to PostgreSQL and secure sessions.
