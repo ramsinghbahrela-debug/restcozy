@@ -35,3 +35,9 @@ Store image object keys, not hardcoded vendor URLs; develop object-storage adapt
 - Storefront regression tests added. Production checkout remains disabled.
 - New photorealistic mattress assets uploaded this session: **0/21**. Do not mark an image complete until a generated file is stored and linked to its specific product.
 - Next: add a labelled AI concept photo, then continue image-by-image; connect real category/product/variant admin API to PostgreSQL and secure sessions.
+
+## 2026-11-18 milestone
+- Generated **concept image 01 of 21**: photorealistic Warm Ivory & Sage bedroom with ivory quilted mattress and sage piping. Saved as a local artifact `restcozy_sage_mattress_concept_01.webp`. This is an **AI-generated illustration, not a photograph of a manufactured RestCozy mattress**.
+- Generated concept count **1/21**. Image uploaded and linked to the storefront: **0/21**. Existing static storefront unchanged.
+- Added `apps/api/publishing.mjs` with fail-closed draft/review/publish role gates and manufacturer, specification, variant, shipping and image verification requirements. Automated tests added. No real admin authentication, database persistence or API deployment is claimed.
+- Next: upload image 01 to approved storage and attach to the correct product with an illustrative label; implement real session verification and database-backed publication transactions.
