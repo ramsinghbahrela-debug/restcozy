@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {canEdit,canPublish,validateTransition,assertReadyToPublish,isPubliclyVisible} from './publishing.mjs';
+const owner={verified:true,disabled:false,subject:'verified-id',role:'owner'};
+const editor={...owner,role:'catalog_editor'};
+const ready={status:'review',manufacturerVerified:true,specificationsVerified:true,shippingPolicyVerified:true,variants:[{mrpPaise:1400000,sellingPricePaise:1200000,stockQuantity:0,verified:true}],images:[{approvedForPublication:true}]};
+test('editors can edit but not publish',()=>{assert.equal(canEdit(editor),true);assert.equal(canPublish(editor),false);assert.throws(()=>validateTransition(editor,'review','published'),/approval/);});
+test('unverified or disabled identity is forbidden',()=>{assert.equal(canEdit({...owner,verified:false}),false);assert.equal(canPublish({...owner,disabled:true}),false);assert.throws(()=>validateTransition(null,'draft','review'),/Forbidden/);});
+test('review is mandatory and verified owner can approve',()=>{assert.throws(()=>validateTransition(owner,'draft','published'),/review/);assert.equal(validateTransition(owner,'review','published').requiresApproval,true);});
+test('cannot publish unverified specs, variant or missing image',()=>{assert.equal(assertReadyToPublish(ready),true);assert.throws(()=>assertReadyToPublish({...ready,manufacturerVerified:false}),/Manufacturer/);assert.throws(()=>assertReadyToPublish({...ready,variants:[{...ready.variants[0],verified:false}]}),/variant/);assert.throws(()=>assertReadyToPublish({...ready,images:[]}),/images/);});
+test('only published products are public',()=>{assert.equal(isPubliclyVisible({...ready,status:'review'}),false);assert.equal(isPubliclyVisible({...ready,status:'published'}),true);assert.equal(isPubliclyVisible({...ready,status:'published',isDeleted:true}),false);});
