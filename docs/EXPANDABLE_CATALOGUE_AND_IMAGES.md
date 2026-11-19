@@ -41,3 +41,11 @@ Store image object keys, not hardcoded vendor URLs; develop object-storage adapt
 - Generated concept count **1/21**. Image uploaded and linked to the storefront: **0/21**. Existing static storefront unchanged.
 - Added `apps/api/publishing.mjs` with fail-closed draft/review/publish role gates and manufacturer, specification, variant, shipping and image verification requirements. Automated tests added. No real admin authentication, database persistence or API deployment is claimed.
 - Next: upload image 01 to approved storage and attach to the correct product with an illustrative label; implement real session verification and database-backed publication transactions.
+
+## 2026-11-19 milestone
+- Generated **concept image 02 of 21**: camera-realistic cream ribbed mattress with muted gold piping on a low oak bed, sage cushions and throw, in a naturally lit bedroom. Local artifact: `a_bright_sunlit_modern_bedroom_product_shot_a_cl.png`. This is AI-generated, not a manufacturer photograph. Generated images total **2/21**; **0/21** images integrated into storefront because a verified image upload/storage path has not yet been configured.
+- Closed a publication bypass: `apps/api/catalog.mjs` now rejects direct `active`, `review` and `published` writes even from privileged roles; publishing must occur through a separate verified workflow.
+- Added `apps/api/public-catalog.mjs` to project only approved, published products with verified variants and approved images; AI concept image records are explicitly marked `illustrative`.
+- Added automated tests for the publication bypass and public catalogue privacy/verification gates.
+- These are **backend library functions only**, not a deployed API. No database migrations have been applied, no production admin sessions configured and no live checkout enabled.
+- Next: implement verified session provider and transactional PostgreSQL repository, set up S3-compatible image storage and upload both existing concept files with disclosure, then connect public catalogue API to storefront.
