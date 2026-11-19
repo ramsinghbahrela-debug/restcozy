@@ -34,3 +34,13 @@ test('image metadata cannot reference foreign path or unsafe mime/size',async()=
  for(const bad of [{...base,objectKey:'products/p2/hero.webp'},{...base,contentType:'image/svg+xml'},{...base,sizeBytes:999999999}])
    await assert.rejects(svc.saveImage(editor,id,bad),/Invalid image metadata/);
 });
+
+test('generic editor endpoint cannot activate or publish products',async()=>{
+ const payload={name:'Comfort',sku:'RC-01',slug:'comfort',pricePaise:1299900};
+ const before=calls.length;
+ for (const role of ['catalog_editor','admin','owner']) {
+   for(const status of ['active','published','review'])
+     await assert.rejects(svc.saveProduct({...editor,role},{...payload,status}),/approved publication workflow/);
+ }
+ assert.equal(calls.length,before);
+});
