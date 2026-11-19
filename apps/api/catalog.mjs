@@ -72,7 +72,17 @@ export function createAdminCatalogService(repo) {
       }
       return repo.saveCategory({...category,id});
     },
-    async saveProduct(principal,data) {requireEditor(principal);return repo.saveProduct({...validateProduct(data),id:data.id ?? null});},
+    async saveProduct(principal,data) {
+      requireEditor(principal);
+      // Legacy schema uses 'active' for public products, while the new publication
+      // workflow uses review/published. Never let this generic editor endpoint
+      // activate a product: publication requires a separate verified transaction.
+      if (data?.status === 'active' || data?.status === 'published' ||
+          data?.status === 'review') {
+        const error = new Error('Use the approved publication workflow'); error.status = 403; throw error;
+      }
+      return repo.saveProduct({...validateProduct(data),id:data.id ?? null});
+    },
     async saveDiscount(principal,productId,data) {
       requireEditor(principal);
       if (!textField(productId,100)) throw new TypeError('Invalid product ID');
