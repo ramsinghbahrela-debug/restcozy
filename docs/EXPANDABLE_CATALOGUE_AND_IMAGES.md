@@ -49,3 +49,8 @@ Store image object keys, not hardcoded vendor URLs; develop object-storage adapt
 - Added automated tests for the publication bypass and public catalogue privacy/verification gates.
 - These are **backend library functions only**, not a deployed API. No database migrations have been applied, no production admin sessions configured and no live checkout enabled.
 - Next: implement verified session provider and transactional PostgreSQL repository, set up S3-compatible image storage and upload both existing concept files with disclosure, then connect public catalogue API to storefront.
+
+## 2026-11-23 photography milestone
+- Generated concept 03: storefront product ID `3`, collection `Comfort`, model `Comfort Premium` (RestCozy). Ivory scallop-pattern quilted top, sage diamond-quilted sides, taupe piping, oak bed and natural daylight. AI-generated illustration, not a verified manufactured product photograph.
+- Session artifact: `a_bright_tidy_bedroom_interior_scene_photographed.png` (1536 × 1024). Intended portable asset name: `comfort-premium-03.webp`; this is a proposed name, not an uploaded path. No persistent repository asset verified; local image bytes cannot be passed directly to the connected GitHub write action in this run.
+- Generated: **3/21**; uploaded: **0/21** verified; storefront integrated: **0/21** verified. Website/admin task: consume the image only after actual bytes are available in persistent storage and label it illustrative. Next concept: product ID 4, Orthopedic Classic. No storefront or admin code changed.
