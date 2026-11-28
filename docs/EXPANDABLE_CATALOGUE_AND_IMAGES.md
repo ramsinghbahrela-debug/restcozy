@@ -77,3 +77,9 @@ Store image object keys, not hardcoded vendor URLs; develop object-storage adapt
 - Generated concept 07: product ID 7, Memory Foam Cloud. Ivory wave quilting, sage upper trim and beige channel-stitched sides in a naturally lit Indian home bedroom. AI-generated illustration, not a verified manufactured product photograph; no material, medical, certification or warranty claims.
 - Session artifact: `a_bright_warm_bedroom_interior_with_a_modern_natu.png` (1536 × 1024). Proposed portable asset name: `memory-foam-cloud-07.webp`. No supported direct bridge from local image bytes to GitHub connector has been established; no persistent project asset verified.
 - Generated: **7/21**; uploaded: **0/21** verified; integrated: **0/21** verified. Website/admin handoff: ID 7, attach only once persistent bytes are verified, retaining illustrative disclosure. Next: product ID 8, verify model name before generation. No storefront/admin code or deployment changed.
+
+
+## 2026-11-28 photography milestone
+- Generated concept 08: product ID `8`, collection `Memory Foam`, model `Memory Foam Contour`. Ivory concentric rounded contour quilting, taupe herringbone-look sides, sage piping and walnut platform bed in natural daylight. AI-generated illustrative concept, not a verified manufactured product photograph; no verified material, medical, certification or warranty claims.
+- Session artifact: `a_clean_modern_bedroom_interior_scene_a_neatly_m.png` (1536 × 1024). Proposed portable name: `memory-foam-contour-08.webp`. No supported direct transfer of local image bytes to the GitHub connector established; no stable project asset verified.
+- Generated: **8/21**; uploaded: **0/21** verified; integrated: **0/21** verified. Website/admin handoff: ID 8, attach only after persistent asset bytes are verified and retain illustrative disclosure. Next: ID 9, Memory Foam Serenity. No storefront/admin code or deployment changed.
